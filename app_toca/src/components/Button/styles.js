@@ -9,6 +9,14 @@ export const Button = styled.button`
   font-family: "Montserrat";
   background-color: #012b40;
   color: white;
+
+  :hover {
+    scale: 1.05;
+    transition: .3s;
+    filter: brightness(1.5);
+
+    cursor: pointer;
+  }
 `;
 
 export const ButtonSecondary = styled.button`
@@ -21,4 +29,8 @@ export const ButtonSecondary = styled.button`
   font-weight: 400;
   background-color: transparent;
   color: #012b40;
+
+  :hover {
+    cursor: pointer;
+  }
 `;
