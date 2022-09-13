@@ -4,10 +4,14 @@ import { AiOutlineMenu } from "react-icons/ai";
 import Logo from "../../assets/LOGO PNG.png";
 import MyProfile from "../MyProfile";
 import { useState } from "react";
+import ModalLogoutProfile from "../MoldalProfileLogout";
+import MyProfileUpdate from "../MyProfileUpdate";
 
 const Header = () => {
   const [displayNav, setDisplayNav] = useState(false);
   const [displayMyProfile, setDisplayMyProfile] = useState(false);
+  const [displayRealProf, setDisplayRealProf] = useState(false);
+  const [displayEdit, setDisplayEdit] = useState(false);
 
   return (
     <Container>
@@ -18,7 +22,25 @@ const Header = () => {
           fontSize="35px"
         />
         {displayMyProfile && (
-          <MyProfile setDisplayMyProfile={setDisplayMyProfile} />
+          <ModalLogoutProfile
+            setDisplayMyProfile={setDisplayMyProfile}
+            setDisplayRealProf={setDisplayRealProf}
+            displayRealProf={displayRealProf}
+          />
+        )}
+        {displayRealProf && (
+          <MyProfile
+            setDisplayRealProf={setDisplayRealProf}
+            setDisplayEdit={setDisplayEdit}
+          />
+        )}
+        {displayEdit && (
+          <MyProfileUpdate
+            displayRealProf={displayRealProf}
+            setDisplayRealProf={setDisplayRealProf}
+            displayEdit={displayEdit}
+            setDisplayEdit={setDisplayEdit}
+          />
         )}
         {displayNav && <NavPages />}
         <Img alt="logo" src={Logo} />

@@ -28,7 +28,8 @@ export const Div1 = styled.div`
   height: 30%;
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center;
 `;
 
 export const Div11 = styled.div`
@@ -98,8 +99,9 @@ export const Div6 = styled.div`
   width: 100%;
   height: 25%;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 `;
 export const Text1 = styled.p`
   font-family: "Montserrat";
@@ -107,11 +109,6 @@ export const Text1 = styled.p`
   color: black;
 `;
 
-export const Text2 = styled.p`
-  font-family: "Montserrat";
-  font-size: 15px;
-  color: black;
-`;
 export const Input = styled.input`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
@@ -130,20 +127,9 @@ export const Input = styled.input`
     color: black;
   }
 `;
-
-export const Text3 = styled.p`
+export const Text2 = styled.p`
   font-family: "Montserrat";
-  font-size: 15px;
+  font-size: 15;
   margin-right: 15px;
   color: black;
-`;
-export const ButtonPrimary = styled.button`
-  border: 0;
-  border-radius: 15px;
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
-  font-size: ${(props) => props.fontSize};
-  font-family: "Montserrat";
-  background-color: #012b40;
-  color: white;
 `;

@@ -15,20 +15,12 @@ import {
   Div12,
   Input,
   Img,
-  ButtonPrimary,
-  Text3,
 } from "./styles";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { ButtonSecondary } from "../Button/styles";
+import { Button, ButtonSecondary } from "../Button/styles";
 import img from "../../assets/image (1).png";
-import { Button } from "../MoldalProfileLogout/styles";
 
-const MyProfile = ({
-  displayRealProf,
-  setDisplayRealProf,
-  displayEdit,
-  setDisplayEdit,
-}) => {
+const MyProfileUpdate = ({ setDisplayRealProf, setDisplayEdit }) => {
   const user = {
     img: img,
     email: "gustavocs81@usp.br",
@@ -48,13 +40,8 @@ const MyProfile = ({
       <CenteredDiv>
         <Div1>
           <Div11>
-            <AiOutlineCloseCircle
-              fontSize="30px"
-              color="#012B40"
-              onClick={() => setDisplayRealProf(false)}
-            />
-            <Text1>{user.apelido}</Text1>
-            <Text2>{user.nome}</Text2>
+            <Input width="88%" height="30px" placeholder={user.apelido} />
+            <Input width="88%" height="30px" placeholder={user.nome} />
           </Div11>
           <Div12>
             <Img src={user.img} alt="userImage" />
@@ -66,37 +53,37 @@ const MyProfile = ({
           </Div21>
           <Div22>
             {user.area.map((a, index) => (
-              <Text3 key={index}>{a}</Text3>
+              <Text2 key={index}>{a}</Text2>
             ))}
           </Div22>
         </Div2>
         <Div3>
-          <Text1>{user.email}</Text1>
+          <Input width="100%" height="45px" placeholder={user.email} />
         </Div3>
         <Div4>
-          <Text1>{user.idade}</Text1>
-          <Text1>{user.ano}</Text1>
-          <Text1>{user.curso}</Text1>
+          <Input width="25%" height="45px" placeholder={user.idade} />
+          <Input width="25%" height="45px" placeholder={user.ano} />
+          <Input width="25%" height="45px" placeholder={user.curso} />
         </Div4>
         <Div5>
-          <Text1>{user.frase}</Text1>
+          <Input width="100%" height="45px" placeholder={user.frase} />
         </Div5>
         <Div6>
-          <ButtonPrimary
-            onClick={() => {
-              setDisplayRealProf(false);
-              setDisplayEdit(true);
-            }}
+          <Button width="150px" height="50px" fontSize="20px">
+            Salvar
+          </Button>
+          <ButtonSecondary
             width="150px"
             height="50px"
             fontSize="20px"
+            onClick={() => setDisplayEdit(false)}
           >
-            Editar Perfil
-          </ButtonPrimary>
+            Cancelar
+          </ButtonSecondary>
         </Div6>
       </CenteredDiv>
     </Container>
   );
 };
 
-export default MyProfile;
+export default MyProfileUpdate;
