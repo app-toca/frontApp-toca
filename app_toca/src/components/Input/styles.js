@@ -17,4 +17,9 @@ export const Input = styled.input`
   ::placeholder {
     color: black;
   }
+
+  :hover {
+    scale: 1.05;
+    transition: .7s;
+  }
 `;

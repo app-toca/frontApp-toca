@@ -1,4 +1,16 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const iconAppearAnimation = keyframes`
+0% {
+  opacity: 0;
+  scale: 1.3;
+}
+
+100%{
+  opacity: 1;
+  scale: 1;
+}
+`;
 
 export const Container = styled.div`
   width: 100%;
@@ -20,6 +32,8 @@ export const UpperDiv = styled.div`
 
 export const Img = styled.img`
   width: 250px;
+  animation: 1.5s ${iconAppearAnimation};
+  transition: 1s;
 `;
 
 export const InputErrorDiv = styled.div`

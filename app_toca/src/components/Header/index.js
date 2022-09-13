@@ -1,7 +1,7 @@
 import { Centralized, Container, Img, ProfileImg } from "./styles";
 import NavPages from "../NavPages";
 import { AiOutlineMenu } from "react-icons/ai";
-import Logo from "../../assets/LOGO PNG.png";
+import Logo from "../../assets/LOGO.jpg";
 import MyProfile from "../MyProfile";
 import { useState } from "react";
 import ModalLogoutProfile from "../MoldalProfileLogout";

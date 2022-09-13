@@ -3,7 +3,7 @@ import { Input } from "../../components/Input/styles";
 import { Button } from "../../components/Button/styles";
 import { SimpleTitle } from "../../components/SimpleTitle/styles";
 import { MiniErrors } from "../../components/MiniErrors/styles";
-import Logo from "../../assets/LOGO PNG.png";
+import Logo from "../../assets/LOGO.svg";
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
