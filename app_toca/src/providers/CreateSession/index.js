@@ -26,11 +26,12 @@ export const CreateSessionProvider = ({ children }) => {
     api
       .post(`/login`, user)
       .then((res) => {
-        setToken(res.token);
-        setUser(res.user);
+        console.log(res);
+        setToken(res.data.token);
+        setUser(res.data.user);
 
-        localStorage.setItem("@userTocaToken", JSON.stringify(res.token));
-        localStorage.setItem("@userToca", JSON.stringify(res.user));
+        localStorage.setItem("@userTocaToken", JSON.stringify(res.data.token));
+        localStorage.setItem("@userToca", JSON.stringify(res.data.user));
       })
       .catch((err) => {
         setToken("");

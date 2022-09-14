@@ -8,6 +8,9 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+import { CreateSessionContext } from "../../providers/CreateSession";
+import { useContext } from "react";
+
 const Login = () => {
   const formSchema = yup.object().shape({
     email: yup
@@ -25,8 +28,10 @@ const Login = () => {
     resolver: yupResolver(formSchema),
   });
 
+  const { loginUser } = useContext(CreateSessionContext);
+
   const onSubmitFunction = (data) => {
-    console.log(data);
+    loginUser(data);
   };
 
   return (
