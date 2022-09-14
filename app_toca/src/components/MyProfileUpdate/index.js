@@ -18,6 +18,7 @@ import {
 } from "./styles";
 import { Button, ButtonSecondary } from "../Button/styles";
 import img from "../../assets/image (1).png";
+import BoxUpload from "../BoxUpload";
 
 const MyProfileUpdate = ({ setDisplayRealProf, setDisplayEdit }) => {
   const user = {
@@ -43,7 +44,7 @@ const MyProfileUpdate = ({ setDisplayRealProf, setDisplayEdit }) => {
             <Input width="88%" height="30px" placeholder={user.nome} />
           </Div11>
           <Div12>
-            <Img src={user.img} alt="userImage" />
+            <BoxUpload />
           </Div12>
         </Div1>
         <Div2>
