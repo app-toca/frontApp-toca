@@ -12,24 +12,14 @@ import {
   Div6,
   Div11,
   Text2,
-  Div12,
-  Input,
-  Img,
   ButtonPrimary,
   Text3,
 } from "./styles";
 import { AiOutlineCloseCircle } from "react-icons/ai";
-import { ButtonSecondary } from "../Button/styles";
 import img from "../../assets/image (1).png";
-import { Button } from "../MoldalProfileLogout/styles";
 import BoxUpload from "../BoxUpload";
 
-const MyProfile = ({
-  displayRealProf,
-  setDisplayRealProf,
-  displayEdit,
-  setDisplayEdit,
-}) => {
+const MyProfile = ({ setDisplayRealProf, setDisplayEdit }) => {
   const user = {
     img: img,
     email: "gustavocs81@usp.br",
@@ -57,7 +47,7 @@ const MyProfile = ({
             <Text1>{user.apelido}</Text1>
             <Text2>{user.nome}</Text2>
           </Div11>
-          <BoxUpload/>
+          <BoxUpload />
         </Div1>
         <Div2>
           <Div21>
