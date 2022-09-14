@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { createContext } from "react";
 import { api } from "../../services/api";
+import { useNavigate } from "react-router-dom";
 
 export const CreateSessionContext = createContext();
 
 export const CreateSessionProvider = ({ children }) => {
+  const nav = useNavigate();
   const [userToken, setToken] = useState(
     JSON.parse(localStorage.getItem("@userTocaToken")) || ""
   );
@@ -29,9 +31,9 @@ export const CreateSessionProvider = ({ children }) => {
         console.log(res);
         setToken(res.data.token);
         setUser(res.data.user);
-
         localStorage.setItem("@userTocaToken", JSON.stringify(res.data.token));
         localStorage.setItem("@userToca", JSON.stringify(res.data.user));
+        nav("/home");
       })
       .catch((err) => {
         setToken("");

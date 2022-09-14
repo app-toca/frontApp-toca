@@ -7,9 +7,9 @@ export const Providers = ({ children }) => {
     <CreateSessionProvider>
       <UsersProvider>
         <PostProvider>
-        {children}
-    </PostProvider>
-    </UsersProvider>
-      </CreateSessionProvider>
+          {children}
+        </PostProvider>
+      </UsersProvider>
+     </CreateSessionProvider>
   );
 };

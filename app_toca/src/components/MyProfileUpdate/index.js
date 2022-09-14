@@ -16,7 +16,6 @@ import {
   Input,
   Img,
 } from "./styles";
-import { AiOutlineCloseCircle } from "react-icons/ai";
 import { Button, ButtonSecondary } from "../Button/styles";
 import img from "../../assets/image (1).png";
 
