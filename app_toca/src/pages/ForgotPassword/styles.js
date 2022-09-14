@@ -20,10 +20,6 @@ export const Container = styled.div`
     #012b40 20.21%,
     rgba(1, 43, 64, 0) 99.87%
   );
-
-  button {
-    cursor: pointer;
-  }
 `;
 export const UpperDiv = styled.div`
   width: 100%;

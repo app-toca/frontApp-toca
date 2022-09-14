@@ -9,6 +9,7 @@ import GP from "./GP";
 import Home from "./Home";
 import Mkt from "./Marketing";
 import Register from "./Register";
+import Forgot from "./ForgotPassword";
 
 export const AppRoutes = () => {
   return (
@@ -21,6 +22,7 @@ export const AppRoutes = () => {
       <Route path="eventos" element={<Eventos />} />
       <Route path="gp" element={<GP />} />
       <Route path="mkt" element={<Mkt />} />
+      <Route path="forgot-password/:email/:token" element={<Forgot />} />
     </Routes>
   );
 };
