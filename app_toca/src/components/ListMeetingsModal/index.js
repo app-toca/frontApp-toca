@@ -1,9 +1,16 @@
-import { Container } from "./styles";
+import {
+  AreaTitleDiv,
+  Container,
+  Meeting,
+  MeetingDivs,
+  MeetingInfoDiv,
+} from "./styles";
 import { api } from "../../services/data";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import { IoMdClose } from "react-icons/io";
 
-export const ListMeetingModal = () => {
+export const ListMeetingModal = ({ openModal }) => {
   const [meetings, setMeetings] = useState([]);
 
   useEffect(() => {
@@ -15,15 +22,22 @@ export const ListMeetingModal = () => {
 
   return (
     <Container>
-      <div>
-        <h1>Area</h1>
-      </div>
-      <div>
-        <h3>Reunião</h3>
-        <h3>Data</h3>
-        <h3>Ata</h3>
-      </div>
-      <div>DivMeeting</div>
+      <AreaTitleDiv>
+        <p>Area</p>
+        <p>
+          <IoMdClose onClick={openModal} />
+        </p>
+      </AreaTitleDiv>
+      <MeetingInfoDiv>
+        <p>Reunião</p>
+        <p>Data</p>
+        <p>Ata</p>
+      </MeetingInfoDiv>
+      <MeetingDivs>
+        {meetings.map((meeting) => {
+          return <Meeting></Meeting>;
+        })}
+      </MeetingDivs>
     </Container>
   );
 };
