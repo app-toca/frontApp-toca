@@ -7,7 +7,6 @@ const Home = () => {
   return (
     <Container>
       <Header />
-      {/*<BoxUpload/>*/}
       <Footer />
     </Container>
   );

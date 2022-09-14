@@ -11,17 +11,9 @@ import doUpload from "../../upload";
 
 const BoxUpload = () => {
   const [fileOfInput, setFileOfInput] = useState([]);
-
-  useEffect(() => {
-    if (fileOfInput.length === 0) {
-      //setMessageFeedbackUpload('Arraste a imagem até o campo acima ou clique no campo e selecione o arquivo')
-    } else {
-      //setMessageFeedbackUpload('Tudo ok, agora você pode finalizar o cadastro. Se deseja mudar a imagem, pode clicar no botão da lixeira')
-    }
-  }, [fileOfInput]);
+  const [profileImage, setProfileImage] = useState("")
 
   const onDropImage = (files) => {
-    console.log(files);
 
     setFileOfInput(files);
   };
@@ -29,7 +21,7 @@ const BoxUpload = () => {
   return (
     <UploadDiv>
         {fileOfInput.length > 0 && <ImagePreview onClickFunction={() => setFileOfInput([])} image={fileOfInput}/>}
-      { fileOfInput.length === 0 && <img src={profile} alt="profile"/>}
+      { fileOfInput.length === 0 && <img src={profileImage !== "" ? profileImage : profile } alt="profile"/>}
       <Dropzone
         accept={{
           "image/*": [".png", ".gif", ".jpeg", ".jpg"],
@@ -67,9 +59,8 @@ const BoxUpload = () => {
                 dataImage.append("image", fileOfInput[fileOfInput.length-1]);
                 const logo = await doUpload(dataImage)
 
-                console.log(logo.data)
-
-                //dataUser.info.src = logo.url
+                setProfileImage(logo.url)
+                setFileOfInput([])
             }} className="save">
             <AiOutlineCheck />
           </button>

@@ -29,7 +29,7 @@ export const UploadContainer = styled.div.attrs({
     className: 'dropzone'
 })`
 
-    border: 1px dashed var(--primary-color);
+    border: 1px dashed black;
     width: 100%;
     border-radius: 50%;
     height: 100%;
