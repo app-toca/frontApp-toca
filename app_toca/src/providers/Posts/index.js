@@ -65,6 +65,7 @@ export const PostProvider = ({ children }) => {
       value={{
         allPosts,
         onePost,
+        allPostsOwner,
         createPost,
         updatePost,
         deletePost,
