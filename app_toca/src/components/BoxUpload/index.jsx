@@ -1,8 +1,8 @@
-import profile from "../../assets/avatardefault_92824.png";
-import { BoxButtons, UploadContainer, UploadDiv } from "./style";
+import { BoxButtons, Profile, UploadContainer, UploadDiv } from "./style";
 import Dropzone from "react-dropzone";
 import { useState } from "react";
 import { useEffect } from "react";
+import { RiAccountCircleFill } from "react-icons/ri";
 
 import { BsPlusCircleDotted } from "react-icons/bs";
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
@@ -21,7 +21,7 @@ const BoxUpload = () => {
   return (
     <UploadDiv>
         {fileOfInput.length > 0 && <ImagePreview onClickFunction={() => setFileOfInput([])} image={fileOfInput}/>}
-      { fileOfInput.length === 0 && <img src={profileImage !== "" ? profileImage : profile } alt="profile"/>}
+      { fileOfInput.length === 0 && (profileImage !== "" ? <img src={profileImage} alt="profile"/> : <Profile><RiAccountCircleFill/></Profile>) } 
       <Dropzone
         accept={{
           "image/*": [".png", ".gif", ".jpeg", ".jpg"],

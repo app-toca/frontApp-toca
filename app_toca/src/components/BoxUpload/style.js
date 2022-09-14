@@ -24,24 +24,29 @@ const dragRejected = css`
     border-color: red;
 `
 
+export const Profile = styled.div`
+font-size: 5rem;
+color: #012b40;
+
+`
+
 
 export const UploadContainer = styled.div.attrs({
     className: 'dropzone'
 })`
 
-    border: 1px dashed black;
-    width: 100%;
+    //border: 1px dashed black;
     border-radius: 50%;
-    height: 100%;
     cursor: pointer;
     position: absolute;
-    top: 0;
-    left: 0;
+    z-index: 9;
+    bottom: 0;
+    right: 0.3rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0,0,0,0.4);
-    color: white;
+    background-color: rgba(1, 38, 57, 0.5);
+    color: black;
 
 
     transition: height 0.2s ease;
