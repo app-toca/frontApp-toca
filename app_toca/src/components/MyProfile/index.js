@@ -6,6 +6,7 @@ import {
   Div21,
   Text1,
   Div22,
+  Div12,
   Div3,
   Div4,
   Div5,
@@ -14,6 +15,7 @@ import {
   Text2,
   ButtonPrimary,
   Text3,
+  Img,
 } from "./styles";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import img from "../../assets/image (1).png";
@@ -47,7 +49,9 @@ const MyProfile = ({ setDisplayRealProf, setDisplayEdit }) => {
             <Text1>{user.apelido}</Text1>
             <Text2>{user.nome}</Text2>
           </Div11>
-          <BoxUpload />
+          <Div12>
+            <Img src={user.img} alt="user.img" />
+          </Div12>
         </Div1>
         <Div2>
           <Div21>
