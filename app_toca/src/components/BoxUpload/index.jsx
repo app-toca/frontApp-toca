@@ -67,7 +67,7 @@ const BoxUpload = () => {
                 dataImage.append("image", fileOfInput[fileOfInput.length-1]);
                 const logo = await doUpload(dataImage)
 
-                console.log(logo.data)
+                console.log(logo)
 
                 //dataUser.info.src = logo.url
             }} className="save">
