@@ -1,13 +1,35 @@
-// import { useContext } from "react";
-// import { FormContext } from "../providers/Form";
-// import { Navigate } from "react-router-dom";
+import { useContext } from "react"
 
-// export const ProtectedRoute = ({ element: Element, onlyFor }) => {
-//   const { userToken } = useContext(FormContext);
+import { Navigate } from "react-router-dom";
+import { CreateSessionContext } from "../providers/CreateSession";
 
-//   if (!userToken) {
-//     return <Navigate to="/" />;
-//   } else {
-//     return <>{Element}</>;
-//   }
-// };
+
+export const ProtectedRoute = ({ element: Element, onlyFor}) => {
+    const { userToken, user } = useContext(CreateSessionContext)
+
+    if(!userToken) {
+        return <Navigate to='/'/>
+    } else if(onlyFor && user[onlyFor.access] !== onlyFor[onlyFor.access] ) {
+        return <Navigate to={onlyFor.path}/>
+    } 
+
+    return (
+        <>
+        {Element}
+        </>
+    )
+}
+
+export const LoginOrRegisterRoute = ({ element: Element}) => {
+    const { userToken } = useContext(CreateSessionContext)
+
+    if(userToken) {
+        return <Navigate to='/home'/>
+      } 
+
+    return (
+        <>
+        {Element}
+        </>
+    )
+}

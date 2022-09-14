@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { ProtectedRoute } from "./route";
+import { LoginOrRegisterRoute, ProtectedRoute } from "./route";
 
 import Login from "./Login";
 import Adm from "./Administracao";
@@ -10,13 +10,13 @@ import Home from "./Home";
 import Mkt from "./Marketing";
 import Register from "./Register";
 import Forgot from "./ForgotPassword";
-
+//onlyFor={{ access: "admin", admin: true path: "/home" }}
 export const AppRoutes = () => {
   return (
     <Routes>
-      <Route index element={<Login />} />
-      <Route path="register" element={<Register />} />
-      <Route path="home" element={<Home />} />
+      <Route index element={<LoginOrRegisterRoute element={<Login />}/>} />
+      <Route path="register" element={<LoginOrRegisterRoute element={<Register />}/>} />
+      <Route path="home" element={<ProtectedRoute element={<Home />}/>} />
       <Route path="adm" element={<Adm />} />
       <Route path="criacao" element={<Criacao />} />
       <Route path="eventos" element={<Eventos />} />
