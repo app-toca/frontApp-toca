@@ -2,7 +2,7 @@ import { Container } from "./styles";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import { CreateMeetingModal } from "../../components/CreateMeetingModal";
-import BoxUpload from "../../components/BoxUpload";
+import { ListMeetingModal } from "../../components/ListMeetingsModal";
 
 const Home = () => {
   return (
@@ -10,7 +10,7 @@ const Home = () => {
       <Header />
       <ModalSchedule />
       <Footer />
-      <CreateMeetingModal />
+      <ListMeetingModal/>
     </Container>
   );
 };
