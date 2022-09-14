@@ -22,6 +22,7 @@ import { AiOutlineCloseCircle } from "react-icons/ai";
 import { ButtonSecondary } from "../Button/styles";
 import img from "../../assets/image (1).png";
 import { Button } from "../MoldalProfileLogout/styles";
+import BoxUpload from "../BoxUpload";
 
 const MyProfile = ({
   displayRealProf,
@@ -56,9 +57,7 @@ const MyProfile = ({
             <Text1>{user.apelido}</Text1>
             <Text2>{user.nome}</Text2>
           </Div11>
-          <Div12>
-            <Img src={user.img} alt="userImage" />
-          </Div12>
+          <BoxUpload/>
         </Div1>
         <Div2>
           <Div21>

@@ -3,16 +3,26 @@ import axios from "axios";
 
 const doUpload = async (data) => {
 
-    //data.append("api_key", api_key);
-    //data.append("upload_preset", "kbreyloh");
+  const login = {
+    "email": "anavitoriacisn314@testing",
+    "password": "senhaFortíssima2444"
+  }
 
-    console.log(data)
+  const testLogin = await axios.post(
+    `https://app-toca.herokuapp.com/login`,
+    login,
+    {
+      headers: { "Content-Type": "application/json" },
+    })
+
+    console.log(testLogin.data.token)
+
   
     const uploadResponse = await axios.post(
       `https://app-toca.herokuapp.com/upload/image`,
       data,
       {
-        headers: { "Access-Control-Allow-Origin": "*","Content-Type": "multipart/form-data" },
+        headers: { "Access-Control-Allow-Origin": "*","Content-Type": "multipart/form-data", "Authorization": `Bearer ${testLogin.data.token}` },
         //...getProgress,
       }
     );
