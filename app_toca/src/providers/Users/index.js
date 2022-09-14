@@ -23,7 +23,7 @@ export const UsersProvider = ({ children }) => {
     api
       .get("/users", config)
       .then((res) => {
-        setAllUsers(res);
+        setAllUsers(res.data);
       })
       .catch((err) => console.log(err));
   };
@@ -32,7 +32,7 @@ export const UsersProvider = ({ children }) => {
     api
       .get(`/users/${user_id}`, config)
       .then((res) => {
-        setOneUser(res);
+        setOneUser(res.data);
       })
       .catch((err) => console.log(err));
   };
@@ -41,7 +41,7 @@ export const UsersProvider = ({ children }) => {
     api
       .get(`/users/${user_id}/areas`, config)
       .then((res) => {
-        setAreasUser(res);
+        setAreasUser(res.data);
       })
       .catch((err) => console.log(err));
   };
