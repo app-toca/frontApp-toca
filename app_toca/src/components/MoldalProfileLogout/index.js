@@ -1,8 +1,11 @@
 import { Button, Container } from "./styles";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { CreateSessionContext } from "../../providers/CreateSession";
 
 const ModalLogoutProfile = ({ setDisplayMyProfile, setDisplayRealProf }) => {
-  const nav = useNavigate();
+
+
+  const { exitUser } = useContext(CreateSessionContext)
 
   const goToProfile = () => {
     setDisplayMyProfile(false);
@@ -10,8 +13,7 @@ const ModalLogoutProfile = ({ setDisplayMyProfile, setDisplayRealProf }) => {
   };
 
   const logout = () => {
-    localStorage.clear();
-    nav("/");
+    exitUser()
   };
   return (
     <Container>

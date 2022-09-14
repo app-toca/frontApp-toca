@@ -4,10 +4,12 @@ import { UsersProvider } from "./Users";
 
 export const Providers = ({ children }) => {
   return (
-    <PostProvider>
-      <CreateSessionProvider>
-        <UsersProvider>{children}</UsersProvider>
-      </CreateSessionProvider>
+    <CreateSessionProvider>
+      <UsersProvider>
+        <PostProvider>
+        {children}
     </PostProvider>
+    </UsersProvider>
+      </CreateSessionProvider>
   );
 };
