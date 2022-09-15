@@ -18,7 +18,7 @@ export const nextMeeting = (day, hour) => {
 
   const finalMeetingDate = new Date(
     currentDate.getFullYear(),
-    currentDate.getMonth(),
+    currentDate.getMonth() + 1,
     meetingDay
   );
 

@@ -8,8 +8,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import axios from "axios";
 import { useState } from "react";
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { toast } from "react-toastify";
 
 const Forgot = () => {
   const formSchema = yup.object().shape({
@@ -20,14 +21,13 @@ const Forgot = () => {
     confirmPassword: yup
       .string()
       .required("Confirme sua senha")
-      .oneOf([yup.ref("password"), null], "Senhas não combinam")
+      .oneOf([yup.ref("password"), null], "Senhas não combinam"),
   });
 
   let { token, email } = useParams();
 
-  const [showPassword, setShowPassword] = useState(false)
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false)
-
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const {
     register,
@@ -37,20 +37,32 @@ const Forgot = () => {
     resolver: yupResolver(formSchema),
   });
 
-  const onSubmitFunction = async(data) => {
-    console.log(token)
-    console.log(data.password)
-    console.log(email)
+  const onSubmitFunction = async (data) => {
+    console.log(token);
+    console.log(data.password);
+    console.log(email);
 
-    const response = await axios.post(
-      `https://app-toca.herokuapp.com/login/change-password/${email}`,
-      {newPassword: data.password},
-      {
-        headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
-      }
-    );
+    const response = await axios
+      .post(
+        `https://app-toca.herokuapp.com/login/change-password/${email}`,
+        { newPassword: data.password },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(() => {
+        toast.success("Senha alterada com sucesso");
+      })
+      .catch(() => {
+        toast.error(
+          "Erro na recuperação de senha, tente novamente, mais tarde"
+        );
+      });
 
-    console.log(response)
+    console.log(response);
   };
 
   return (
@@ -68,21 +80,33 @@ const Forgot = () => {
             type={showPassword ? "text" : "password"}
             {...register("password")}
           />
-          <button onClick={(e) => {
-            e.preventDefault()
-            setShowPassword(!showPassword)
-
-          }}>{showPassword ? <AiFillEyeInvisible/> : <AiFillEye/>}</button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setShowPassword(!showPassword);
+            }}
+          >
+            {showPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+          </button>
         </InputErrorDiv>
 
         <InputErrorDiv>
-          {errors.confirmPassword && <MiniErrors>{errors.confirmPassword.message}</MiniErrors>}
-          <Input type={showConfirmPassword ? "text" : "password"} placeholder="Confirme a senha" {...register("confirmPassword")} />
-          <button onClick={(e) => {
-            e.preventDefault()
-            setShowConfirmPassword(!showConfirmPassword)
-
-          }}>{showConfirmPassword ? <AiFillEyeInvisible/> : <AiFillEye/>}</button>
+          {errors.confirmPassword && (
+            <MiniErrors>{errors.confirmPassword.message}</MiniErrors>
+          )}
+          <Input
+            type={showConfirmPassword ? "text" : "password"}
+            placeholder="Confirme a senha"
+            {...register("confirmPassword")}
+          />
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              setShowConfirmPassword(!showConfirmPassword);
+            }}
+          >
+            {showConfirmPassword ? <AiFillEyeInvisible /> : <AiFillEye />}
+          </button>
         </InputErrorDiv>
 
         <Button type="submit" width="150px" height="50px" fontSize="20px">
