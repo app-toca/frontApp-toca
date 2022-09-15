@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState } from "react";
 import { api } from "../../services/api";
 import { useContext } from "react";
 import { CreateSessionContext } from "../CreateSession";
@@ -6,6 +6,7 @@ import { CreateSessionContext } from "../CreateSession";
 export const MeetingsContext = createContext();
 
 export const MeetingsProvider = ({ children }) => {
+  const [meetings, setMeetings] = useState([]);
   const { userToken } = useContext(CreateSessionContext);
 
   const config = {
@@ -19,7 +20,7 @@ export const MeetingsProvider = ({ children }) => {
     api
       .get(`/meetings/areas/${area_id}`, config)
       .then((res) => {
-        return res.data;
+        setMeetings(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -53,7 +54,14 @@ export const MeetingsProvider = ({ children }) => {
 
   return (
     <MeetingsContext.Provider
-      value={{ meetingsPerArea, createMeeting, updateMeeting, deletemeeting }}
+      value={{
+        meetingsPerArea,
+        createMeeting,
+        updateMeeting,
+        deletemeeting,
+        meetings,
+        setMeetings,
+      }}
     >
       {children}
     </MeetingsContext.Provider>

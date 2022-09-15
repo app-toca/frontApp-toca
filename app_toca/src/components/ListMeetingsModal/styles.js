@@ -1,78 +1,69 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  position: absolute;
-
+  position: fixed;
   width: 90%;
   height: 80%;
-
   top: 5rem;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #ffffff;
-
   border-radius: 1rem;
 `;
 
-export const AreaTitleDiv = styled.div`
-  width: 100%;
-  height: 13%;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  p {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    font-size: 2rem;
-
-    margin-left: 2.6rem;
-    margin-right: 2.6rem;
-  }
-`;
-
-export const MeetingInfoDiv = styled.div`
-  width: 100%;
-  height: 7%;
-
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-
-  p {
-    font-size: 1.5rem;
-  }
-`;
-
-export const MeetingDivs = styled.div`
-  width: 100%;
-  height: 80%;
-
+export const Centered = styled.div`
+  width: 92%;
+  height: 92%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 `;
 
-export const Meeting = styled.div`
-  width: 85%;
-  height: 30%;
-
+export const TitleDiv = styled.div`
+  height: 10%;
+  width: 100%;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
+`;
+export const LeftTitleDiv = styled.div`
+  width: 65%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+`;
 
-  font-style: "Montserrat";
+export const RightTitleDiv = styled.div`
+  width: 10%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+`;
+export const BottomDiv = styled.div`
+  height: 70%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+`;
 
-  p {
-    height: 30%;
-    width: 40%;
-  }
+export const Title = styled.p`
+  font-family: "CharcuterieBlockW05-Regular";
+  font-size: 30px;
+  color: black;
+  font-weight: 500;
+`;
 
-  a {
-    height: 30%;
-    width: 20%;
-  }
+export const Bottom = styled.div`
+  height: 15%;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 `;

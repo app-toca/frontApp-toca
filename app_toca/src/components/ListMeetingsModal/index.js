@@ -1,44 +1,52 @@
 import {
-  AreaTitleDiv,
+  Centered,
   Container,
-  Meeting,
-  MeetingDivs,
-  MeetingInfoDiv,
+  TitleDiv,
+  Title,
+  LeftTitleDiv,
+  RightTitleDiv,
+  BottomDiv,
+  Bottom,
 } from "./styles";
 import { useContext, useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { MeetingsContext } from "../../providers/Meetings";
+import MeetModal from "../Meet";
+import { ButtonSecondary } from "../Button/styles";
+import { ButtonPrimary } from "../MyProfile/styles";
 
-export const ListMeetingModal = ({ setOpenMeeting, area_id }) => {
-  const { meetingsPerArea } = useContext(MeetingsContext);
-  const [meetings, setMeetings] = useState([]);
-
-  useEffect(()=> {
-    setMeetings(meetingsPerArea(area_id));
-  }, [meetings])
+export const ListMeetingModal = ({ setOpenMeetings, area_id }) => {
+  const { meetingsPerArea, meetings } = useContext(MeetingsContext);
+  console.log(meetings);
+  useEffect(() => {
+    meetingsPerArea(area_id);
+  }, []);
 
   return (
     <Container>
-      <AreaTitleDiv>
-        <p>Area</p>
-        <p>
-          <IoMdClose onClick={() => setOpenMeeting(false)} />
-        </p>
-      </AreaTitleDiv>
-      <MeetingInfoDiv>
-        <p>Reunião</p>
-        <p>Data</p>
-        <p>Ata</p>
-      </MeetingInfoDiv>
-      <MeetingDivs>
-        {meetings?.map((meeting) => {
-          return <Meeting>
-            <p>{meeting.description}</p>
-            <p>{meeting.date_time}</p>
-            <a href={meeting.area}>Ata</a>
-          </Meeting>;
-        })}
-      </MeetingDivs>
+      <Centered>
+        <TitleDiv>
+          <LeftTitleDiv>
+            <Title>Reuniões</Title>
+          </LeftTitleDiv>
+          <RightTitleDiv>
+            <IoMdClose onClick={() => setOpenMeetings(false)} fontSize="25px" />
+          </RightTitleDiv>
+        </TitleDiv>
+        <BottomDiv>
+          {meetings.map((meeting) => (
+            <MeetModal meeting={meeting} />
+          ))}
+        </BottomDiv>
+        <Bottom>
+          <ButtonPrimary height="30px" width="40%">
+            Melhores horários
+          </ButtonPrimary>
+          <ButtonSecondary width="40%" height="30px">
+            Criar Reunião
+          </ButtonSecondary>
+        </Bottom>
+      </Centered>
     </Container>
   );
 };
