@@ -59,4 +59,20 @@ export const MeetingDivs = styled.div`
 export const Meeting = styled.div`
   width: 85%;
   height: 30%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  font-style: "Montserrat";
+
+  p {
+    height: 30%;
+    width: 40%;
+  }
+
+  a {
+    height: 30%;
+    width: 20%;
+  }
 `;

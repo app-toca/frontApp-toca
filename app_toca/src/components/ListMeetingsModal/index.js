@@ -5,27 +5,24 @@ import {
   MeetingDivs,
   MeetingInfoDiv,
 } from "./styles";
-import { api } from "../../services/data";
-import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
+import { useContext, useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
+import { MeetingsContext } from "../../providers/Meetings";
 
-export const ListMeetingModal = ({ openModal }) => {
+export const ListMeetingModal = ({ setOpenMeeting, area_id }) => {
+  const { meetingsPerArea } = useContext(MeetingsContext);
   const [meetings, setMeetings] = useState([]);
 
-  useEffect(() => {
-    api
-      .get(`/meetings`)
-      .then((res) => setMeetings(res.data))
-      .catch((err) => toast.error(err));
-  }, [meetings]);
+  useEffect(()=> {
+    setMeetings(meetingsPerArea(area_id));
+  }, [meetings])
 
   return (
     <Container>
       <AreaTitleDiv>
         <p>Area</p>
         <p>
-          <IoMdClose onClick={openModal} />
+          <IoMdClose onClick={() => setOpenMeeting(false)} />
         </p>
       </AreaTitleDiv>
       <MeetingInfoDiv>
@@ -34,8 +31,12 @@ export const ListMeetingModal = ({ openModal }) => {
         <p>Ata</p>
       </MeetingInfoDiv>
       <MeetingDivs>
-        {meetings.map((meeting) => {
-          return <Meeting></Meeting>;
+        {meetings?.map((meeting) => {
+          return <Meeting>
+            <p>{meeting.description}</p>
+            <p>{meeting.date_time}</p>
+            <a href={meeting.area}>Ata</a>
+          </Meeting>;
         })}
       </MeetingDivs>
     </Container>

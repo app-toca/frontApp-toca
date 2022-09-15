@@ -10,7 +10,7 @@ const Home = () => {
       <Header />
       <ModalSchedule />
       <Footer />
-      <ListMeetingModal/>
+      <CreateMeetingModal/>
     </Container>
   );
 };
