@@ -16,6 +16,9 @@ import { useContext, useEffect, useState } from "react";
 import { AreasContext } from "../../providers/Areas";
 import { CreateSessionContext } from "../../providers/CreateSession";
 import { PostContext } from "../../providers/Posts";
+import { CreateMeetingModal } from "../../components/CreateMeetingModal";
+import ModalSchedule from "../../components/ModalSchedules";
+
 
 const AreaPage = ({ area }) => {
   const [openMeetings, setOpenMeetings] = useState(false);
@@ -23,7 +26,6 @@ const AreaPage = ({ area }) => {
   const { listUsersFromArea, users } = useContext(AreasContext);
   const { user } = useContext(CreateSessionContext);
   const { listPostsFromArea, postsFromArea } = useContext(PostContext);
-  console.log(postsFromArea);
 
   useEffect(() => {
     listUsersFromArea(area.id);
@@ -31,7 +33,7 @@ const AreaPage = ({ area }) => {
     //ver como pegar o ultimo post
   }, []);
 
-  //   console.log("aqui", postsFromArea);
+  console.log("aqui", area);
   return (
     <Container>
       <Header />
@@ -57,6 +59,8 @@ const AreaPage = ({ area }) => {
           </ButtonSecondary>
         </ButtonsDiv>
       </MiddleDiv>
+      {<ModalSchedule area_id={area.id}/>}
+      
       <Footer />
     </Container>
   );

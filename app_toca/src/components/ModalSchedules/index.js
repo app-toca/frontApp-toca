@@ -1,30 +1,20 @@
+
+
+import { useContext, useEffect } from "react";
+import { ScheduleContext } from "../../providers/Schedules";
 import { Celula, Centered, Column, Container } from "./syles";
 
-const ModalSchedule = () => {
-  const schedule = [
-    { day: 0, hour: "20:00", qtt_users: 3 },
-    { day: 1, hour: "19:00", qtt_users: 1 },
-    { day: 2, hour: "20:00", qtt_users: 3 },
-    { day: 2, hour: "14:00", qtt_users: 2 },
-    { day: 3, hour: "17:00", qtt_users: 3 },
-    { day: 3, hour: "18:00", qtt_users: 4 },
-    { day: 3, hour: "19:00", qtt_users: 5 },
-    { day: 3, hour: "20:00", qtt_users: 5 },
-    { day: 3, hour: "21:00", qtt_users: 10 },
-    { day: 3, hour: "22:00", qtt_users: 2 },
-    { day: 4, hour: "12:00", qtt_users: 3 },
-    { day: 4, hour: "13:00", qtt_users: 2 },
-    { day: 4, hour: "14:00", qtt_users: 5 },
-    { day: 4, hour: "15:00", qtt_users: 4 },
-    { day: 4, hour: "16:00", qtt_users: 5 },
-    { day: 4, hour: "17:00", qtt_users: 5 },
-    { day: 4, hour: "18:00", qtt_users: 6 },
-    { day: 4, hour: "19:00", qtt_users: 7 },
-    { day: 4, hour: "20:00", qtt_users: 8 },
-    { day: 4, hour: "21:00", qtt_users: 7 },
-    { day: 5, hour: "20:00", qtt_users: 3 },
-    { day: 6, hour: "22:00", qtt_users: 3 },
-  ];
+const ModalSchedule = ({area_id}) => {
+
+  const {getSchedulesReport,schedulesReport} =  useContext(ScheduleContext)
+  console.log(area_id)
+
+  useEffect(() => {
+
+    getSchedulesReport(area_id)
+
+  }, [])
+
 
   const hours = [
     { "9:00": 0 },
@@ -77,8 +67,15 @@ const ModalSchedule = () => {
         {days.map((day, index) => {
           const keysD = Object.keys(day);
           return (
-            <Column key={index}>
-              <Celula>{day[`${index}`]}</Celula>
+
+            <Column key={`${index}Day${keysD[0]}`}>
+          <Celula>{day[`${index}`]}</Celula>
+          
+          {hours.map((hou) => {
+            const keysH = Object.keys(hou)
+            const qtt = schedulesReport.find((sch) => sch.day === Number(keysD[0]) && sch.hour === keysH[0])
+            return <Celula key={`${keysH[0]}Hour${day[keysD[0]]}`}>{qtt ? qtt.qtt_users : '-'}</Celula>
+
 
               {hours.map((hou) => {
                 const keysH = Object.keys(hou);

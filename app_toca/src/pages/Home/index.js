@@ -10,8 +10,6 @@ const Home = () => {
     <Container>
       <Header />
       <Footer />
-      {/* <ListMeetingModal/> */}
-      <ModalSchedule />
     </Container>
   );
 };

@@ -10,7 +10,7 @@ export const UsersProvider = ({ children }) => {
   const [oneUser, setOneUser] = useState("");
   const [areasUser, setAreasUser] = useState([]);
 
-  const { userToken } = useContext(CreateSessionContext);
+  const { userToken, user } = useContext(CreateSessionContext);
 
   const config = {
     headers: {
@@ -37,9 +37,9 @@ export const UsersProvider = ({ children }) => {
       .catch((err) => console.log(err));
   };
 
-  const listAreasUser = (user_id) => {
+  const listAreasUser = () => {
     api
-      .get(`/users/${user_id}/areas`, config)
+      .get(`/users/${user.id}/areas`, config)
       .then((res) => {
         setAreasUser(res.data);
       })
@@ -73,9 +73,9 @@ export const UsersProvider = ({ children }) => {
         allUsers,
         oneUser,
         areasUser,
+        listAreasUser,
         getUsers,
         showOneUser,
-        listAreasUser,
         updateUser,
         updateUserOwner,
         deleteUser,

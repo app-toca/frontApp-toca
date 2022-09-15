@@ -1,50 +1,27 @@
 import { Container, PageContainer, Img } from "./styles";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaMoneyBillWave } from "react-icons/fa"; //Adm
 import { HiOutlineLightBulb } from "react-icons/hi"; //criacao
 import { MdEvent } from "react-icons/md"; //eventos
 import { MdPeopleAlt } from "react-icons/md"; //gp
 import { GiAbstract050 } from "react-icons/gi"; //mkt
+import { useContext, useEffect, useState } from "react";
+import { AreasContext } from "../../providers/Areas";
 
 const NavPages = () => {
   const navigate = useNavigate();
 
-  const pages = [
-    {
-      name: "ADM",
-      icon: <FaMoneyBillWave color="white" fontSize="25px" />,
-      path: "/adm",
-    },
-    {
-      name: "Criação",
-      icon: <HiOutlineLightBulb color="white" fontSize="25px" />,
-      path: "/criacao",
-    },
-    {
-      name: "Eventos",
-      icon: <MdEvent color="white" fontSize="25px" />,
-      path: "/eventos",
-    },
-    {
-      name: "GEPE",
-      icon: <MdPeopleAlt color="white" fontSize="25px" />,
-      path: "/gp",
-    },
-    {
-      name: "Marketing",
-      icon: <GiAbstract050 color="white" fontSize="25px" />,
-      path: "/mkt",
-    },
-  ];
+  const { allAreas} = useContext(AreasContext)
 
   return (
     <Container>
-      {pages.map((page, index) => {
+      {allAreas.map((page, index) => {
         return (
-          <PageContainer onClick={() => navigate(page.path)} key={index}>
-            {page.icon}
+          <Link key={index} to={`/${page.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`}><PageContainer key={index}>
+            {<FaMoneyBillWave color="white" fontSize="25px" />}
             {page.name}
           </PageContainer>
+          </Link>
         );
       })}
     </Container>

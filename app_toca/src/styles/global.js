@@ -134,5 +134,9 @@ body {
 #root {
   height: 100vh;
 }
+
+a {
+  text-decoration: none;
+}
 `;
 export default GlobalStyle;
