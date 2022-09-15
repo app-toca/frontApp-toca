@@ -15,7 +15,12 @@ import MeetModal from "../Meet";
 import { ButtonSecondary } from "../Button/styles";
 import { ButtonPrimary } from "../MyProfile/styles";
 
-export const ListMeetingModal = ({ setOpenMeetings, area_id }) => {
+export const ListMeetingModal = ({
+  setOpenMeetings,
+  area_id,
+  setOpenSchedule,
+  openSchedule,
+}) => {
   const { meetingsPerArea, meetings } = useContext(MeetingsContext);
   console.log(meetings);
   useEffect(() => {
@@ -39,7 +44,11 @@ export const ListMeetingModal = ({ setOpenMeetings, area_id }) => {
           ))}
         </BottomDiv>
         <Bottom>
-          <ButtonPrimary height="30px" width="40%">
+          <ButtonPrimary
+            onClick={() => setOpenSchedule(!openSchedule)}
+            height="30px"
+            width="40%"
+          >
             Melhores horários
           </ButtonPrimary>
           <ButtonSecondary width="40%" height="30px">

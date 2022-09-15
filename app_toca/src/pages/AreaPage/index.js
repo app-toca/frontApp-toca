@@ -20,10 +20,9 @@ import { ListMeetingModal } from "../../components/ListMeetingsModal";
 import { CreateMeetingModal } from "../../components/CreateMeetingModal";
 import ModalSchedule from "../../components/ModalSchedules";
 
-
 const AreaPage = ({ area }) => {
   const [openMeetings, setOpenMeetings] = useState(false);
-
+  const [openSchedule, setOpenSchedule] = useState(false);
   const { listUsersFromArea, users } = useContext(AreasContext);
   const { user } = useContext(CreateSessionContext);
   const { listPostsFromArea, postsFromArea } = useContext(PostContext);
@@ -42,7 +41,12 @@ const AreaPage = ({ area }) => {
           <ListMeetingModal
             setOpenMeetings={setOpenMeetings}
             area_id={area.id}
+            setOpenSchedule={setOpenSchedule}
+            openSchedule={openSchedule}
           />
+        )}
+        {openSchedule && (
+          <ModalSchedule area_id={area.id} setOpenSchedule={setOpenSchedule} />
         )}
         <AreaTitle>{area?.name}</AreaTitle>
         <MembersDiv>
@@ -71,7 +75,7 @@ const AreaPage = ({ area }) => {
         </ButtonsDiv>
       </MiddleDiv>
       {/*<ModalSchedule area_id={area.id}/>*/}
-      
+
       <Footer />
     </Container>
   );

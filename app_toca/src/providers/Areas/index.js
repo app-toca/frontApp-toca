@@ -10,7 +10,8 @@ export const AreasContext = createContext();
 export const AreasProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
   const [areas, setAreas] = useState([]);
-  const [allAreas, setAllAreas] = useState([])
+
+  const [allAreas, setAllAreas] = useState([]);
 
   const { userToken, user } = useContext(CreateSessionContext);
 
@@ -61,7 +62,7 @@ export const AreasProvider = ({ children }) => {
         setAreas,
         users,
         getAllAreas,
-        allAreas
+        allAreas,
       }}
     >
       {children}

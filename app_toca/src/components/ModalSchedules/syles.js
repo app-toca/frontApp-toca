@@ -36,6 +36,7 @@ export const Celula = styled.div`
     props.isSchedule ? `rgba(0, 0, 255, ${props?.colorValue})` : "#698493"};
   font-size: 12px;
   display: flex;
+  font-family: "Montserrat";
   align-items: center;
   justify-content: center;
   color: black;

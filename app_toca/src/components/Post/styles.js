@@ -2,18 +2,17 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height: fit-content;
+  height: 180px;
+  display: flex;
   border-radius: 15px;
   background-color: white;
-  display: flex;
   align-items: center;
   justify-content: center;
 `;
 
 export const Centralized = styled.div`
   width: 90%;
-  height: fit-content;
-  padding: 0.5rem;
+  height: 90%;
   display: flex;
   flex-direction: column;
   gap: 5px;
