@@ -1,4 +1,3 @@
-
 import { Celula, Centered, Column, Container } from "./syles";
 
 const ModalSchedule = () => {
@@ -7,14 +6,52 @@ const ModalSchedule = () => {
     { day: 1, hour: "19:00", qtt_users: 1 },
     { day: 2, hour: "20:00", qtt_users: 3 },
     { day: 2, hour: "14:00", qtt_users: 2 },
-    { day: 3, hour: "20:00", qtt_users: 3 },
-    { day: 4, hour: "21:00", qtt_users: 4 },
+    { day: 3, hour: "17:00", qtt_users: 3 },
+    { day: 3, hour: "18:00", qtt_users: 4 },
+    { day: 3, hour: "19:00", qtt_users: 5 },
+    { day: 3, hour: "20:00", qtt_users: 5 },
+    { day: 3, hour: "21:00", qtt_users: 10 },
+    { day: 3, hour: "22:00", qtt_users: 2 },
+    { day: 4, hour: "12:00", qtt_users: 3 },
+    { day: 4, hour: "13:00", qtt_users: 2 },
+    { day: 4, hour: "14:00", qtt_users: 5 },
+    { day: 4, hour: "15:00", qtt_users: 4 },
+    { day: 4, hour: "16:00", qtt_users: 5 },
+    { day: 4, hour: "17:00", qtt_users: 5 },
+    { day: 4, hour: "18:00", qtt_users: 6 },
+    { day: 4, hour: "19:00", qtt_users: 7 },
+    { day: 4, hour: "20:00", qtt_users: 8 },
+    { day: 4, hour: "21:00", qtt_users: 7 },
     { day: 5, hour: "20:00", qtt_users: 3 },
     { day: 6, hour: "22:00", qtt_users: 3 },
   ];
 
-  const hours = [{"9:00": 0}, {"10:00": 0}, {"11:00": 0}, {"12:00": 0}, {"13:00": 0}, {"14:00": 0}, {"15:00": 0}, {"16:00": 0}, {"17:00": 0}, {"18:00": 0}, {"19:00": 0}, {"20:00": 0}, {"21:00": 0}, {"22:00": 0}, {"23:00": 0}]
-  const days = [{"0": "Dom"},{"1": "Seg"},{"2": "Ter"},{"3": "Qua"},{"4": "Qui"},{"5": "Sex"}, {"6": "Sab"}]
+  const hours = [
+    { "9:00": 0 },
+    { "10:00": 0 },
+    { "11:00": 0 },
+    { "12:00": 0 },
+    { "13:00": 0 },
+    { "14:00": 0 },
+    { "15:00": 0 },
+    { "16:00": 0 },
+    { "17:00": 0 },
+    { "18:00": 0 },
+    { "19:00": 0 },
+    { "20:00": 0 },
+    { "21:00": 0 },
+    { "22:00": 0 },
+    { "23:00": 0 },
+  ];
+  const days = [
+    { 0: "Dom" },
+    { 1: "Seg" },
+    { 2: "Ter" },
+    { 3: "Qua" },
+    { 4: "Qui" },
+    { 5: "Sex" },
+    { 6: "Sab" },
+  ];
 
   return (
     <Container>
@@ -38,21 +75,31 @@ const ModalSchedule = () => {
           <Celula>23:00</Celula>
         </Column>
         {days.map((day, index) => {
-
-          const keysD = Object.keys(day)
+          const keysD = Object.keys(day);
           return (
             <Column key={index}>
-          <Celula>{day[`${index}`]}</Celula>
-          
-          {hours.map((hou) => {
-            const keysH = Object.keys(hou)
-            const qtt = schedule.find((sch) => sch.day === Number(keysD[0]) && sch.hour === keysH[0])
-            return <Celula key={index}>{qtt ? qtt.qtt_users : '-'}</Celula>
+              <Celula>{day[`${index}`]}</Celula>
 
-          })}
-          
-        </Column>
-          )
+              {hours.map((hou) => {
+                const keysH = Object.keys(hou);
+                const qtt = schedule.find(
+                  (sch) => sch.day === Number(keysD[0]) && sch.hour === keysH[0]
+                );
+                const maxQtt = schedule.reduce((prev, current) =>
+                  prev.qtt_users > current.qtt_users ? prev : current
+                );
+                return (
+                  <Celula
+                    key={index}
+                    colorValue={qtt ? qtt.qtt_users / maxQtt.qtt_users : 0}
+                    isSchedule={true}
+                  >
+                    {/* {qtt ? qtt.qtt_users : "-"} */}
+                  </Celula>
+                );
+              })}
+            </Column>
+          );
         })}
       </Centered>
     </Container>
