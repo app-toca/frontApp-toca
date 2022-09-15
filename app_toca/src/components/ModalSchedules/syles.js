@@ -33,7 +33,7 @@ export const Celula = styled.div`
   height: 6.25%;
   border: black solid 1px;
   background-color: ${(props) =>
-    props.isSchedule ? `rgba(0, 0, 255, ${props?.colorValue})` : "white"};
+    props.isSchedule ? `rgba(0, 0, 255, ${props?.colorValue})` : "#698493"};
   font-size: 12px;
   display: flex;
   align-items: center;

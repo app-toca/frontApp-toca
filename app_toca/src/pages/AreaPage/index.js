@@ -33,7 +33,6 @@ const AreaPage = ({ area }) => {
     //ver como pegar o ultimo post
   }, []);
 
-  console.log("aqui", area);
   return (
     <Container>
       <Header />
@@ -59,7 +58,7 @@ const AreaPage = ({ area }) => {
           </ButtonSecondary>
         </ButtonsDiv>
       </MiddleDiv>
-      {<ModalSchedule area_id={area.id}/>}
+      {/*<ModalSchedule area_id={area.id}/>*/}
       
       <Footer />
     </Container>

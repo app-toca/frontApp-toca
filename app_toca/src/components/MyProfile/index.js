@@ -20,22 +20,14 @@ import {
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import img from "../../assets/image (1).png";
 import BoxUpload from "../BoxUpload";
+import { useContext } from "react";
+import { CreateSessionContext } from "../../providers/CreateSession";
 
 const MyProfile = ({ setDisplayRealProf, setDisplayEdit }) => {
-  const user = {
-    img: img,
-    email: "gustavocs81@usp.br",
-    password: "$2a$10$/PkAa1LIZpGywBmK8O9AnO7ULotz8aUaiQW3ibfgKQ6wH7OxZq8ZC",
-    ehlider: true,
-    area: ["Marketing", "Administração"],
-    nome: "Gustavo da Costa",
-    apelido: "Buiu",
-    idade: 22,
-    curso: "EQN",
-    ano: 19,
-    frase: "A vida não é um morango",
-    id: 1,
-  };
+  
+  const {user} = useContext(CreateSessionContext)
+
+
   return (
     <Container>
       <CenteredDiv>
@@ -46,11 +38,11 @@ const MyProfile = ({ setDisplayRealProf, setDisplayEdit }) => {
               color="#012B40"
               onClick={() => setDisplayRealProf(false)}
             />
-            <Text1>{user.apelido}</Text1>
-            <Text2>{user.nome}</Text2>
+            <Text1>{user.nickname}</Text1>
+            <Text2>{user.name}</Text2>
           </Div11>
           <Div12>
-            <Img src={user.img} alt="user.img" />
+            <Img src={user.img.url} alt="user.img" />
           </Div12>
         </Div1>
         <Div2>
@@ -58,21 +50,21 @@ const MyProfile = ({ setDisplayRealProf, setDisplayEdit }) => {
             <Text1>Area(s)</Text1>
           </Div21>
           <Div22>
-            {user.area.map((a, index) => (
+            {/*user.area.map((a, index) => (
               <Text3 key={index}>{a}</Text3>
-            ))}
+            ))*/}
           </Div22>
         </Div2>
         <Div3>
           <Text1>{user.email}</Text1>
         </Div3>
         <Div4>
-          <Text1>{user.idade}</Text1>
-          <Text1>{user.ano}</Text1>
-          <Text1>{user.curso}</Text1>
+          <Text1>{user.age}</Text1>
+          <Text1>{user.year}</Text1>
+          <Text1>{user.course}</Text1>
         </Div4>
         <Div5>
-          <Text1>{user.frase}</Text1>
+          <Text1>{user.phrase}</Text1>
         </Div5>
         <Div6>
           <ButtonPrimary
