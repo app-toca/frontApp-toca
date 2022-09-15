@@ -21,6 +21,7 @@ export const MiddleDiv = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  gap: 0.5rem;
 `;
 
 export const AreaTitle = styled.p`
@@ -40,6 +41,10 @@ export const PostDiv = styled.div`
   width: 100%;
   height: 28%;
   overflow-y: auto;
+
+  >div {
+    margin-bottom: 0.5rem;
+  }
 `;
 
 export const ButtonsDiv = styled.div`

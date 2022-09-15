@@ -7,39 +7,24 @@ import { useContext } from "react";
 import { AreasContext } from "../providers/Areas";
 import Forgot from "./ForgotPassword";
 import AreaPage from "./AreaPage";
-import { CreateSessionContext } from "../providers/CreateSession";
-import { api } from "../services/api";
 import { useEffect } from "react";
 
 //onlyFor={{ access: "admin", admin: true path: "/home" }}
 export const AppRoutes = () => {
-  const { userToken, user } = useContext(CreateSessionContext);
-  const { setAreas, areas } = useContext(AreasContext);
-
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${userToken}`,
-    },
-  };
+  const { getAllAreas, allAreas} = useContext(AreasContext)
 
   useEffect(() => {
-    api
-      .get("/areas", config)
-      .then((res) => {
-        setAreas(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+    getAllAreas()
+  }, [])
 
   return (
     <Routes>
       <Route index element={<LoginOrRegisterRoute element={<Login />} />} />
       <Route path="home" element={<ProtectedRoute element={<Home />} />} />
-      {areas?.map((area) => (
+      {allAreas?.map((area) => (
         <Route
           key={area.id}
-          path={area.name}
+          path={`${area.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`}
           element={<AreaPage area={area} />}
         />
       ))}

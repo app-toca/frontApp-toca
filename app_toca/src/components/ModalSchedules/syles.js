@@ -31,6 +31,10 @@ export const Column = styled.div`
 export const Celula = styled.div`
   width: 100%;
   height: 6.25%;
+  border: black solid 1px;
+  background-color: ${(props) =>
+    props.isSchedule ? `rgba(0, 0, 255, ${props?.colorValue})` : "#698493"};
+  font-size: 12px;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  height: 165px;
+  height: fit-content;
   border-radius: 15px;
   background-color: white;
   display: flex;
@@ -12,7 +12,8 @@ export const Container = styled.div`
 
 export const Centralized = styled.div`
   width: 90%;
-  height: 90%;
+  height: fit-content;
+  padding: 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 5px;
