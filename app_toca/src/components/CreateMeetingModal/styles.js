@@ -2,11 +2,9 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   position: absolute;
-
-  width: 90%;
-  height: 80%;
-
-  top: 5rem;
+  padding: 10px;
+  box-shadow: 0 0 5px 1px;
+  top: 1rem;
 
   background-color: #ffffff;
 
@@ -31,10 +29,9 @@ export const CreateMeetingForm = styled.form`
     height: 10rem;
 
     border-radius: 0.4rem;
-    border: .09rem solid black;
+    border: 0.09rem solid black;
 
     font-size: 1rem;
-
   }
 
   input {
@@ -42,8 +39,15 @@ export const CreateMeetingForm = styled.form`
     height: 3rem;
 
     border-radius: 0.4rem;
-    border: .09rem solid black;
+    border: 0.09rem solid black;
 
     font-size: 2rem;
+    text-align: center;
   }
+`;
+
+export const AreaTitleDiv = styled.div`
+  margin: 8px 20px;
+  display: flex;
+  justify-content: space-between;
 `;

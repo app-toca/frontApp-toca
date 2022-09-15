@@ -1,8 +1,12 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ScheduleContext } from "../../providers/Schedules";
+import { nextMeeting } from "../../utils/meeting";
+import { CreateMeetingModal } from "../CreateMeetingModal";
 import { Celula, Centered, Column, Container } from "./syles";
 
 const ModalSchedule = ({ area_id }) => {
+  const [createMeeting, setCreateMeeting] = useState(false);
+  const [dataTime, setDataTime] = useState("");
   const { getSchedulesReport, schedulesReport } = useContext(ScheduleContext);
 
   useEffect(() => {
@@ -38,6 +42,12 @@ const ModalSchedule = ({ area_id }) => {
 
   return (
     <Container>
+      {createMeeting && (
+        <CreateMeetingModal
+          data_time={dataTime}
+          setCreateMeeting={setCreateMeeting}
+        />
+      )}
       <Centered>
         <Column>
           <Celula>Hours</Celula>
@@ -77,6 +87,14 @@ const ModalSchedule = ({ area_id }) => {
                     key={`${keysH[0]}Hour${day[keysD[0]]}`}
                     colorValue={qtt ? qtt.qtt_users / maxQtt.qtt_users : 0}
                     isSchedule={true}
+                    isButton={qtt ? true : false}
+                    onClick={() => {
+                      if (qtt) {
+                        console.log(qtt);
+                        setCreateMeeting(true);
+                        setDataTime(nextMeeting(qtt.day, qtt.hour));
+                      }
+                    }}
                   >
                     {/* {qtt ? qtt.qtt_users : "-"}  */}
                   </Celula>

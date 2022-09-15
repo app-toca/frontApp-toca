@@ -12,6 +12,7 @@ import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 import { CreateSessionContext } from "../../providers/CreateSession";
 import { useContext } from "react";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -39,13 +40,22 @@ const Login = () => {
   };
 
   const onTryingChangePassword = async (data) => {
-    const testChange = await axios.post(
-      `https://app-toca.herokuapp.com/login/forgot-password/${data.email}`,
-      { url: "http://localhost:3000/forgot-password" },
-      {
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    const testChange = await axios
+      .post(
+        `https://app-toca.herokuapp.com/login/forgot-password/${data.email}`,
+        { url: "http://localhost:3000/forgot-password" },
+        {
+          headers: { "Content-Type": "application/json" },
+        }
+      )
+      .then(() => {
+        toast.success("Check sua caixa de email");
+      })
+      .catch(() => {
+        toast.error(
+          "Erro na recuperação de senha, tente novamente, mais tarde"
+        );
+      });
 
     console.log(testChange);
   };
