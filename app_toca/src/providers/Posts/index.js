@@ -5,9 +5,9 @@ import { CreateSessionContext } from "../CreateSession";
 export const PostContext = createContext();
 
 export const PostProvider = ({ children }) => {
-  const [allPosts, setAllPosts] = useState();
-  const [onePost, setOnePost] = useState();
-  const [allPostsOwner, setAllPostsOwner] = useState();
+  const [postsFromArea, setPostsFromArea] = useState([]);
+  const [onePost, setOnePost] = useState({});
+  const [allPostsOwner, setAllPostsOwner] = useState([]);
 
   const { userToken } = useContext(CreateSessionContext);
 
@@ -56,14 +56,14 @@ export const PostProvider = ({ children }) => {
   const listPostsFromArea = (area_id) => {
     api
       .get(`/posts/areas/${area_id}`, config)
-      .then((res) => setAllPosts(res.data))
+      .then((res) => setPostsFromArea(res.data))
       .catch((err) => console.log(err));
   };
 
   return (
     <PostContext.Provider
       value={{
-        allPosts,
+        postsFromArea,
         onePost,
         allPostsOwner,
         createPost,

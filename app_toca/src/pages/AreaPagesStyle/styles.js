@@ -36,6 +36,12 @@ export const MembersDiv = styled.div`
   overflow-x: auto;
 `;
 
+export const PostDiv = styled.div`
+  width: 100%;
+  height: 28%;
+  overflow-y: auto;
+`;
+
 export const ButtonsDiv = styled.div`
   height: fit-content;
   width: 100%;

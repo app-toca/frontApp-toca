@@ -1,9 +1,25 @@
 import { createContext } from "react";
 import { api } from "../../services/api";
+import { useState } from "react";
+import { useContext } from "react";
+import { CreateSessionContext } from "../CreateSession";
+import { useEffect } from "react";
 
 export const AreasContext = createContext();
 
 export const AreasProvider = ({ children }) => {
+  const [users, setUsers] = useState([]);
+  const [areas, setAreas] = useState([]);
+
+  const { userToken, user } = useContext(CreateSessionContext);
+
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${userToken}`,
+    },
+  };
+
   const showArea = (area_id) => {
     api
       .get(`/areas/${area_id}`)
@@ -20,15 +36,24 @@ export const AreasProvider = ({ children }) => {
 
   const listUsersFromArea = (area_id) => {
     api
-      .get(`/areas/${area_id}/users`)
+      .get(`/areas/${area_id}/users`, config)
       .then((res) => {
-        return res.data;
+        setUsers(res.data);
       })
       .catch((err) => console.log(err));
   };
 
   return (
-    <AreasContext.Provider value={{ showArea, updateArea, listUsersFromArea }}>
+    <AreasContext.Provider
+      value={{
+        showArea,
+        updateArea,
+        listUsersFromArea,
+        areas,
+        setAreas,
+        users,
+      }}
+    >
       {children}
     </AreasContext.Provider>
   );
