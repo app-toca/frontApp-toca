@@ -10,6 +10,7 @@ export const AreasContext = createContext();
 export const AreasProvider = ({ children }) => {
   const [users, setUsers] = useState([]);
   const [areas, setAreas] = useState([]);
+  const [allAreas, setAllAreas] = useState([])
 
   const { userToken, user } = useContext(CreateSessionContext);
 
@@ -24,6 +25,13 @@ export const AreasProvider = ({ children }) => {
     api
       .get(`/areas/${area_id}`)
       .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
+
+  const getAllAreas = () => {
+    api
+      .get(`/areas`, config)
+      .then((res) => setAllAreas(res.data))
       .catch((err) => console.log(err));
   };
 
@@ -52,6 +60,8 @@ export const AreasProvider = ({ children }) => {
         areas,
         setAreas,
         users,
+        getAllAreas,
+        allAreas
       }}
     >
       {children}

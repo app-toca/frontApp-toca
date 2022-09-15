@@ -9,7 +9,7 @@ const Home = () => {
     <Container>
       <Header />
       <Footer />
-      <ListMeetingModal/>
+      {/*<ListMeetingModal/>*/}
     </Container>
   );
 };
