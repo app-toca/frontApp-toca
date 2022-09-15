@@ -3,15 +3,20 @@ import Dropzone from "react-dropzone";
 import { useState } from "react";
 import { useEffect } from "react";
 import { RiAccountCircleFill } from "react-icons/ri";
-
 import { BsPlusCircleDotted } from "react-icons/bs";
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 import ImagePreview from "../ImagePreview";
 import doUpload from "../../upload";
+import { useContext } from "react";
+import { CreateSessionContext } from "../../providers/CreateSession";
 
-const BoxUpload = () => {
+const BoxUpload = ({url}) => {
   const [fileOfInput, setFileOfInput] = useState([]);
-  const [profileImage, setProfileImage] = useState("")
+  const [profileImage, setProfileImage] = useState(url)
+  const { userToken } = useContext(CreateSessionContext)
+
+  console.log(url)
+
 
   const onDropImage = (files) => {
 
@@ -57,8 +62,7 @@ const BoxUpload = () => {
 
               const dataImage = new FormData();
                 dataImage.append("image", fileOfInput[fileOfInput.length-1]);
-                const logo = await doUpload(dataImage)
-
+                const logo = await doUpload(dataImage, userToken)
                 setProfileImage(logo.url)
                 setFileOfInput([])
             }} className="save">

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { css } from "styled-components";
 
 export const UploadDiv = styled.div`
-  width: 100%;
+  width: fit-content;
   height: 100%;
   position: relative;
   border-radius: 50%;
