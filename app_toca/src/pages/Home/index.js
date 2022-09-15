@@ -8,7 +8,6 @@ const Home = () => {
   return (
     <Container>
       <Header />
-      <ModalSchedule />
       <Footer />
       <CreateMeetingModal/>
     </Container>
