@@ -3,15 +3,18 @@ import NavPages from "../NavPages";
 import { AiOutlineMenu } from "react-icons/ai";
 import Logo from "../../assets/LOGO.svg";
 import MyProfile from "../MyProfile";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ModalLogoutProfile from "../MoldalProfileLogout";
 import MyProfileUpdate from "../MyProfileUpdate";
+import { CreateSessionContext } from "../../providers/CreateSession";
 
 const Header = () => {
   const [displayNav, setDisplayNav] = useState(false);
   const [displayMyProfile, setDisplayMyProfile] = useState(false);
   const [displayRealProf, setDisplayRealProf] = useState(false);
   const [displayEdit, setDisplayEdit] = useState(false);
+
+  const { user } = useContext(CreateSessionContext);
 
   return (
     <Container>
@@ -46,7 +49,7 @@ const Header = () => {
         <Img alt="logo" src={Logo} />
         <ProfileImg
           alt="profileImg"
-          src={Logo}
+          src={user.img.url}
           onClick={() => setDisplayMyProfile(!displayMyProfile)}
         />
       </Centralized>

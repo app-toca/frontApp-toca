@@ -23,4 +23,5 @@ export const Img = styled.img`
 
 export const ProfileImg = styled.img`
   height: 70%;
+  border-radius: 50%;
 `;

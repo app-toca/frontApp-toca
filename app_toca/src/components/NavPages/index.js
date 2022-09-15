@@ -1,26 +1,30 @@
-import { Container, PageContainer, Img } from "./styles";
+import { Container, PageContainer } from "./styles";
 import { Link, useNavigate } from "react-router-dom";
 import { FaMoneyBillWave } from "react-icons/fa"; //Adm
-import { HiOutlineLightBulb } from "react-icons/hi"; //criacao
-import { MdEvent } from "react-icons/md"; //eventos
-import { MdPeopleAlt } from "react-icons/md"; //gp
-import { GiAbstract050 } from "react-icons/gi"; //mkt
-import { useContext, useEffect, useState } from "react";
+
+import { useContext } from "react";
 import { AreasContext } from "../../providers/Areas";
 
 const NavPages = () => {
   const navigate = useNavigate();
 
-  const { allAreas} = useContext(AreasContext)
+  const { allAreas, setCurrentArea } = useContext(AreasContext);
 
   return (
     <Container>
       {allAreas.map((page, index) => {
         return (
-          <Link key={index} to={`/${page.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`}><PageContainer key={index}>
-            {<FaMoneyBillWave color="white" fontSize="25px" />}
-            {page.name}
-          </PageContainer>
+          <Link
+            key={index}
+            to={`/${page.name
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "")}`}
+            onClick={() => setCurrentArea({ name: page.name, id: page.id })}
+          >
+            <PageContainer key={index}>
+              {<FaMoneyBillWave color="white" fontSize="25px" />}
+              {page.name}
+            </PageContainer>
           </Link>
         );
       })}

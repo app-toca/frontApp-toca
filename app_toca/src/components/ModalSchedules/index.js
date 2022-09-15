@@ -1,19 +1,13 @@
-
-
 import { useContext, useEffect } from "react";
 import { ScheduleContext } from "../../providers/Schedules";
 import { Celula, Centered, Column, Container } from "./syles";
 
-const ModalSchedule = ({area_id}) => {
-
-  const {getSchedulesReport,schedulesReport} =  useContext(ScheduleContext)
+const ModalSchedule = ({ area_id }) => {
+  const { getSchedulesReport, schedulesReport } = useContext(ScheduleContext);
 
   useEffect(() => {
-
-    getSchedulesReport(area_id)
-
-  }, [])
-
+    getSchedulesReport(area_id);
+  }, []);
 
   const hours = [
     { "9:00": 0 },
@@ -66,24 +60,25 @@ const ModalSchedule = ({area_id}) => {
         {days.map((day, index) => {
           const keysD = Object.keys(day);
           return (
-
             <Column key={`${index}Day${keysD[0]}`}>
-          <Celula>{day[`${index}`]}</Celula>
+              <Celula>{day[`${index}`]}</Celula>
               {hours.map((hou) => {
                 const keysH = Object.keys(hou);
                 const qtt = schedulesReport.find(
                   (sch) => sch.day === Number(keysD[0]) && sch.hour === keysH[0]
                 );
-                const maxQtt = schedulesReport?.reduce((prev, current) =>
-                  prev.qtt_users > current.qtt_users ? prev : current
-                ,0);
+                const maxQtt = schedulesReport?.reduce(
+                  (prev, current) =>
+                    prev.qtt_users > current.qtt_users ? prev : current,
+                  0
+                );
                 return (
                   <Celula
                     key={`${keysH[0]}Hour${day[keysD[0]]}`}
                     colorValue={qtt ? qtt.qtt_users / maxQtt.qtt_users : 0}
                     isSchedule={true}
                   >
-                     {qtt ? qtt.qtt_users : "-"} 
+                    {/* {qtt ? qtt.qtt_users : "-"}  */}
                   </Celula>
                 );
               })}

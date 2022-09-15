@@ -11,11 +11,11 @@ import { useEffect } from "react";
 
 //onlyFor={{ access: "admin", admin: true path: "/home" }}
 export const AppRoutes = () => {
-  const { getAllAreas, allAreas} = useContext(AreasContext)
+  const { getAllAreas, allAreas } = useContext(AreasContext);
 
   useEffect(() => {
-    getAllAreas()
-  }, [])
+    getAllAreas();
+  }, []);
 
   return (
     <Routes>
@@ -25,7 +25,7 @@ export const AppRoutes = () => {
         <Route
           key={area.id}
           path={`${area.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`}
-          element={<AreaPage area={area} />}
+          element={<ProtectedRoute element={<AreaPage area={area} />} />}
         />
       ))}
 
