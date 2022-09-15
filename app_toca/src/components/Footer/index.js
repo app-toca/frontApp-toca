@@ -1,6 +1,6 @@
 import { Centralized, Container } from "./styles";
 import { FaHome } from "react-icons/fa";
-import Logo from "../../assets/LOGO.jpg";
+import Logo from "../../assets/LOGO.svg";
 import { AiFillMessage } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
