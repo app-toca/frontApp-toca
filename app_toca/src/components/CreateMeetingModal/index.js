@@ -1,23 +1,23 @@
 import { IoMdClose } from "react-icons/io";
 // import { AreaTitleDiv } from "../ListMeetingsModal/styles";
-import { Container, CreateMeetingForm } from "./styles";
+import { AreaTitleDiv, Container, CreateMeetingForm } from "./styles";
 
-export const CreateMeetingModal = ({ setOpenMeeting }) => {
+export const CreateMeetingModal = ({ data_time, setCreateMeeting }) => {
   return (
     <Container>
-      {/* <AreaTitleDiv>
+      <AreaTitleDiv>
         <p>Meeting</p>
         <p>
-          <IoMdClose onClick={() => setOpenMeeting(false)} />
+          <IoMdClose onClick={() => setCreateMeeting(false)} />
         </p>
-      </AreaTitleDiv> */}
+      </AreaTitleDiv>
       <CreateMeetingForm>
         <label>Descrição</label>
         <textarea className="description_input" />
         <label>Duração</label>
         <input />
         <label>Data</label>
-        <input />
+        <input value={data_time} disabled />
         <label>Link Ata</label>
         <input />
         <button>Enviar</button>
