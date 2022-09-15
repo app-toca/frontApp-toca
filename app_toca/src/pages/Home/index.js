@@ -9,7 +9,6 @@ const Home = () => {
     <Container>
       <Header />
       <Footer />
-      <ListMeetingModal/>
     </Container>
   );
 };

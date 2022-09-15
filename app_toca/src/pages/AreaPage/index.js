@@ -16,6 +16,7 @@ import { useContext, useEffect, useState } from "react";
 import { AreasContext } from "../../providers/Areas";
 import { CreateSessionContext } from "../../providers/CreateSession";
 import { PostContext } from "../../providers/Posts";
+import { ListMeetingModal } from "../../components/ListMeetingsModal";
 
 const AreaPage = ({ area }) => {
   const [openMeetings, setOpenMeetings] = useState(false);
@@ -36,6 +37,12 @@ const AreaPage = ({ area }) => {
     <Container>
       <Header />
       <MiddleDiv>
+        {openMeetings && (
+          <ListMeetingModal
+            setOpenMeetings={setOpenMeetings}
+            area_id={area.id}
+          />
+        )}
         <AreaTitle>{area?.name}</AreaTitle>
         <MembersDiv>
           <AreaMembers members={users} />
@@ -52,7 +59,12 @@ const AreaPage = ({ area }) => {
               Criar post
             </Button>
           )}
-          <ButtonSecondary width="30%" height="40px" fontSize="17px">
+          <ButtonSecondary
+            onClick={() => setOpenMeetings(true)}
+            width="30%"
+            height="40px"
+            fontSize="17px"
+          >
             Reuniões
           </ButtonSecondary>
         </ButtonsDiv>
