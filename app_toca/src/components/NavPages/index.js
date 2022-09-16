@@ -15,6 +15,7 @@ const NavPages = () => {
       {allAreas.map((page, index) => {
         return (
           <Link
+            style={{ width: "95%" }}
             key={index}
             to={`/${page.name
               .normalize("NFD")

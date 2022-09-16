@@ -20,13 +20,17 @@ import {
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import img from "../../assets/image (1).png";
 import BoxUpload from "../BoxUpload";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CreateSessionContext } from "../../providers/CreateSession";
+import { UsersContext } from "../../providers/Users";
 
 const MyProfile = ({ setDisplayRealProf, setDisplayEdit }) => {
-  
-  const {user} = useContext(CreateSessionContext)
+  const { user } = useContext(CreateSessionContext);
+  const { listAreasUser, areasUser } = useContext(UsersContext);
 
+  useEffect(() => {
+    listAreasUser(user.id);
+  }, []);
 
   return (
     <Container>
@@ -50,9 +54,9 @@ const MyProfile = ({ setDisplayRealProf, setDisplayEdit }) => {
             <Text1>Area(s)</Text1>
           </Div21>
           <Div22>
-            {/*user.area.map((a, index) => (
-              <Text3 key={index}>{a}</Text3>
-            ))*/}
+            {areasUser.map((a, index) => (
+              <Text3 key={index}>{a.name}</Text3>
+            ))}
           </Div22>
         </Div2>
         <Div3>

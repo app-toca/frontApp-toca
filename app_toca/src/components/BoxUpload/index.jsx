@@ -10,23 +10,31 @@ import doUpload from "../../upload";
 import { useContext } from "react";
 import { CreateSessionContext } from "../../providers/CreateSession";
 
-const BoxUpload = ({url}) => {
+const BoxUpload = ({ url }) => {
   const [fileOfInput, setFileOfInput] = useState([]);
-  const [profileImage, setProfileImage] = useState(url)
-  const { userToken } = useContext(CreateSessionContext)
-
-  console.log(url)
-
+  const [profileImage, setProfileImage] = useState(url);
+  const { userToken } = useContext(CreateSessionContext);
 
   const onDropImage = (files) => {
-
     setFileOfInput(files);
   };
 
   return (
     <UploadDiv>
-        {fileOfInput.length > 0 && <ImagePreview onClickFunction={() => setFileOfInput([])} image={fileOfInput}/>}
-      { fileOfInput.length === 0 && (profileImage !== "" ? <img src={profileImage} alt="profile"/> : <Profile><RiAccountCircleFill/></Profile>) } 
+      {fileOfInput.length > 0 && (
+        <ImagePreview
+          onClickFunction={() => setFileOfInput([])}
+          image={fileOfInput}
+        />
+      )}
+      {fileOfInput.length === 0 &&
+        (profileImage !== "" ? (
+          <img src={profileImage} alt="profile" />
+        ) : (
+          <Profile>
+            <RiAccountCircleFill />
+          </Profile>
+        ))}
       <Dropzone
         accept={{
           "image/*": [".png", ".gif", ".jpeg", ".jpg"],
@@ -49,28 +57,32 @@ const BoxUpload = ({url}) => {
             isDragReject={isDragReject}
             isDragAccept={isDragAccept}
           >
-            {fileOfInput.length === 0 && <div>
-              <BsPlusCircleDotted />
-            </div>}
+            {fileOfInput.length === 0 && (
+              <div>
+                <BsPlusCircleDotted />
+              </div>
+            )}
             <input {...getInputProps()} />
           </UploadContainer>
         )}
       </Dropzone>
       {fileOfInput.length !== 0 && (
         <BoxButtons>
-          <button onClick={async() => {
-
+          <button
+            onClick={async () => {
               const dataImage = new FormData();
-                dataImage.append("image", fileOfInput[fileOfInput.length-1]);
-                const logo = await doUpload(dataImage, userToken)
-                setProfileImage(logo.url)
-                setFileOfInput([])
-            }} className="save">
+              dataImage.append("image", fileOfInput[fileOfInput.length - 1]);
+              const logo = await doUpload(dataImage, userToken);
+              setProfileImage(logo.url);
+              setFileOfInput([]);
+            }}
+            className="save"
+          >
             <AiOutlineCheck />
           </button>
           <button
             onClick={() => {
-              setFileOfInput([])
+              setFileOfInput([]);
             }}
             className="cancel"
           >

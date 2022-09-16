@@ -1,7 +1,7 @@
-import { Container } from "./styles";
+import { Container, InnerMiddle } from "./styles";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
-import { MiddleDiv } from "../AreaPagesStyle/styles";
+import { MiddleDiv } from "./styles";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { PostContext } from "../../providers/Posts";
@@ -18,9 +18,11 @@ const Home = () => {
     <Container>
       <Header />
       <MiddleDiv>
-        {allPostsOwner.map((post) => (
-          <Post post={post} key={post.id} />
-        ))}
+        <InnerMiddle>
+          {allPostsOwner.map((post) => (
+            <Post post={post} key={post.id} />
+          ))}
+        </InnerMiddle>
       </MiddleDiv>
       <Footer />
     </Container>

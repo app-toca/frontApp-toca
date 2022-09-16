@@ -19,7 +19,7 @@ export const PageContainer = styled.div`
   height: 55px;
   display: flex;
   align-items: center;
-  width: 90%;
+  width: 100%;
   color: white;
   font-family: "Montserrat";
   border-bottom: 1px solid white;

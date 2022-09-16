@@ -14,13 +14,13 @@ export const Container = styled.div`
   box-shadow: 0px 0px 50px 10px rgba(0, 0, 0, 0.25);
 `;
 
-export const CenteredDiv = styled.div`
+export const CenteredDiv = styled.form`
   width: 90%;
   height: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 `;
 
 export const Div1 = styled.div`
@@ -91,13 +91,13 @@ export const Div4 = styled.div`
 `;
 export const Div5 = styled.div`
   width: 100%;
-  height: 10%;
+  height: 15%;
   display: flex;
   align-items: center;
 `;
 export const Div6 = styled.div`
   width: 100%;
-  height: 25%;
+  height: 17%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -132,4 +132,24 @@ export const Text2 = styled.p`
   font-size: 15;
   margin-right: 15px;
   color: black;
+`;
+
+export const TextArea = styled.textarea`
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+  font-family: "Montserrat";
+  border-radius: 8px;
+  background-color: white;
+  flex-wrap: wrap;
+  border: 1px solid #012b40;
+  font-size: 15px;
+  padding-left: 10px;
+  :focus {
+    outline: 0;
+    box-shadow: 0 0 0 0;
+    background-color: white;
+  }
+  ::placeholder {
+    color: black;
+  }
 `;

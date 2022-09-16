@@ -10,7 +10,7 @@ export const UsersProvider = ({ children }) => {
   const [oneUser, setOneUser] = useState("");
   const [areasUser, setAreasUser] = useState([]);
 
-  const { userToken, user } = useContext(CreateSessionContext);
+  const { userToken, user, setUser } = useContext(CreateSessionContext);
 
   const config = {
     headers: {
@@ -49,7 +49,10 @@ export const UsersProvider = ({ children }) => {
   const updateUser = (user_id, user) => {
     api
       .patch(`/users/${user_id}`, user, config)
-      .then((res) => {})
+      .then((res) => {
+        setUser(res.data);
+        localStorage.setItem("@userToca", JSON.stringify(res.data.user));
+      })
       .catch((err) => console.log(err));
   };
 
